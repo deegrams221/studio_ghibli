@@ -10,11 +10,11 @@ export const FETCH_SEARCH_SUCCESS = 'FETCH_SEARCH_SUCCESS';
 export const FETCH_SEARCH_FAIL = 'FETCH_SEARCH_FAIL';
 
 // action creators
-export const getFilm = () => dispatch => {
+export const getFilm = (url) => dispatch => {
   // dispatch and axios request
   dispatch({type: FETCH_FILM_START});
   axios
-    .get(`https://ghibliapi.herokuapp.com/films`)
+    .get(url)
     .then(res => {
       console.log('axios request:', res.data);
       dispatch({type: FETCH_FILM_SUCCESS, payload: res.data})
@@ -25,10 +25,10 @@ export const getFilm = () => dispatch => {
     })
 };
 
-export const getSearch = () => dispatch => {
+export const getSearch = (url) => dispatch => {
   dispatch({type: FETCH_SEARCH_START});
   axios
-    .get(``)
+    .get(url)
     .then(res => {
       dispatch({type: FETCH_SEARCH_SUCCESS, payload: res.data})
     })
