@@ -16,7 +16,6 @@ const initialState = {
   error: '',
   searchResults: [],
   searchUrl: null,
-  filmCard: {},
   url: `https://ghibliapi.herokuapp.com/films`
 };
 

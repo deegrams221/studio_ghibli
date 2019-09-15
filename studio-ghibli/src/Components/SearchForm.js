@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {setSearch} from '../Store/Actions';
 import SearchList from './SearchList';
 
-  const SearchForm = (props) => {
+const SearchForm = (props) => {
   const [input, setInput] = useState('');
   const [options, setOptions] = useState('');
 

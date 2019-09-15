@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <div className='navbar'>
       <div className='nav-logo'>
@@ -11,8 +11,10 @@ export const Navbar = () => {
       <div className='nav-links'>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/films'>Films</NavLink>
-        <NavLink to='/search'>Search</NavLink>
+        <NavLink to='/SearchForm'>Search</NavLink>
       </div>
     </div>
   );
 };
+
+export default Navbar;

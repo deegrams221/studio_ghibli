@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   return(
     <div className='home'>
       <h1>Welcome to the Studio Ghibli Film List</h1>
@@ -9,3 +9,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;
