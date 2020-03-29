@@ -1,3 +1,3 @@
 # studio_ghibli
 
-Personal project created for practice.
+Personal project created for coding practice.
