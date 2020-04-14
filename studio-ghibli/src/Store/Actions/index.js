@@ -2,6 +2,9 @@
 import axios from 'axios';
 
 // action types
+export const FETCH_FILMS_START = 'FETCH_FILM_START';
+export const FETCH_FILMS_SUCCESS = 'FETCH_FILM_SUCCESS';
+export const FETCH_FILMS_FAIL = 'FETCH_FILM_FAIL';
 export const FETCH_FILM_START = 'FETCH_FILM_START';
 export const FETCH_FILM_SUCCESS = 'FETCH_FILM_SUCCESS';
 export const FETCH_FILM_FAIL = 'FETCH_FILM_FAIL';
@@ -12,15 +15,22 @@ export const FETCH_SEARCH_FAIL = 'FETCH_SEARCH_FAIL';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 
 // action creators
-export const changePage = (number) => {
-  return {
-    type: CHANGE_PAGE,
-    payload: number
-  };
-};
-
 export const getFilm = (url) => dispatch => {
   // dispatch and axios request
+  dispatch({type: FETCH_FILMS_START});
+  axios
+    .get(url)
+    .then(res => {
+      console.log('axios request:', res.data);
+      dispatch({type: FETCH_FILMS_SUCCESS, payload: res.data})
+    })
+    .catch(error => {
+      dispatch({type: FETCH_FILMS_FAIL, payload: error.res})
+    })
+};
+
+export const getOneFilm = (url) => dispatch => {
+
   dispatch({type: FETCH_FILM_START});
   axios
     .get(url)
@@ -33,16 +43,10 @@ export const getFilm = (url) => dispatch => {
     })
 };
 
-export const setSearch = (url) => {
-  return {
-    type: SET_FILM_SEARCH, payload: url
-  }
-};
-
-export const getSearch = () => dispatch => {
+export const getSearch = (props) => dispatch => {
   dispatch({type: FETCH_SEARCH_START});
   axios
-    .get(`https://ghibliapi.herokuapp.com/films/<id>`)
+    .get(`https://ghibliapi.herokuapp.com/films/${props.film.id}`)
     .then(res => {
       dispatch({type: FETCH_SEARCH_SUCCESS, payload: res.data})
     })

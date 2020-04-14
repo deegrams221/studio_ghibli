@@ -1,15 +1,11 @@
-import React,  {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {getFilm} from '../Store/Actions';
+import {getOneFilm} from '../Store/Actions';
 
-const FilmCard = ({getFilm, films, isFetching, id}) => {
+const FilmCard = ({getOneFilm, films, id}) => {
   useEffect(() => {
-    getFilm(`https://ghibliapi.herokuapp.com/films/<id>`);
-  }, [getFilm, id]);
-
-  if(isFetching) {
-    return <h2>Here comes your film!</h2>
-  }
+    getOneFilm(`https://ghibliapi.herokuapp.com/films`);
+  }, [getOneFilm, id]);
 
   return (
     <div className='film-card'>
@@ -27,8 +23,7 @@ const FilmCard = ({getFilm, films, isFetching, id}) => {
 const mapStateToProps = state => {
   return {
     films: state.films,
-    isFetching: state.isFetching
   };
 };
 
-export default connect(mapStateToProps, {getFilm})(FilmCard);
+export default connect(mapStateToProps, {getOneFilm})(FilmCard);

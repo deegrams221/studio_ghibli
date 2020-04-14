@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getSearch} from '../Store/Actions';
 import Films from './Films';
 
-const SearchList = ({getSearch, searchResults, isFetching, searchUrl}) => {
+const SearchList = ({getSearch, searchResults, searchUrl}) => {
   useEffect(() => {
     getSearch(searchUrl);
   }, [getSearch, searchUrl]);

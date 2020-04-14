@@ -22,7 +22,6 @@ const FilmList = ({getFilm, films, url, isFetching}) => {
 
 const mapStateToProps = state => {
   return {
-    film: state.film,
     films: state.films,
     url: state.url,
     isFetching: state.isFetching,
